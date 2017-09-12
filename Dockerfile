@@ -8,7 +8,7 @@ RUN yum update -y && \
 
 ENV JAVA_HOME=/usr/java/default/ \
     ZK_HOSTS=localhost:2181 \
-    KM_VERSION=1.3.1.8 \
+    KM_VERSION=1.3.3.13 \
     KM_REVISION=97329cc8bf462723232ee73dc6702c064b5908eb \
     KM_CONFIGFILE="conf/application.conf"
 
@@ -19,7 +19,7 @@ RUN yum install -y java-1.8.0-openjdk-devel git wget unzip which && \
     cd /tmp && \
     git clone https://github.com/yahoo/kafka-manager && \
     cd /tmp/kafka-manager && \
-    git checkout ${KM_REVISION} && \
+    git checkout ${KM_VERSION} && \
     echo 'scalacOptions ++= Seq("-Xmax-classfile-name", "200")' >> build.sbt && \
     ./sbt clean dist && \
     unzip  -d / ./target/universal/kafka-manager-${KM_VERSION}.zip && \
